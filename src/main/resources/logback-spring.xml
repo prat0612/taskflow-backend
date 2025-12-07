@@ -1,0 +1,23 @@
+<configuration scan="true">
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/taskflow.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/taskflow.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- new file after 5MB -->
+            <maxFileSize>5MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <!-- user from MDC, thread name, level -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{user}] %logger{36}%line: - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="ROLLING"/>
+    </root>
+
+</configuration>

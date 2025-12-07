@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: taskflow-backend
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/taskflow?useSSL=false
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
+
+logging:
+  file:
+    name: logs/taskflow.log
+  level:
+    root: INFO
